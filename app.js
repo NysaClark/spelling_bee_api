@@ -41,10 +41,9 @@ const calcTotalPoints = (dict, panagramsList) => {
 
 app.get("/", (req, res) => {
   let randomGame = games[Math.floor(Math.random() * 17589)];
-console.log(randomGame)
+
   let panagramsList = pangrams[randomGame.id.split("_")[0]]
   let totalPoints = calcTotalPoints(randomGame.dictionary, panagramsList);
-
 
   res.json({
     letters: randomGame.chars,
