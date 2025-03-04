@@ -1,27 +1,14 @@
 const express = require("express");
 const PORT = process.env.PORT || 3001;
+const cors = require('cors');
 
 const app = express();
 
 const games = require("./data/games.json");
 const pangrams = require("./data/pangrams.json");
 
+app.use(cors()) 
 app.use(express.json());
-
-// ranks
-// four letter words - 1point
-// longer words are worth 1 point per letter
-// A pangram is worth seven bonus points
-
-// beginner     0 < 10%
-// good start   10% < 15%
-// moving up    15% < 20%
-// good         20% < 30%
-// solid        30% < 40%
-// nice         40% < 50%
-// great        50% < 60%
-// amazing      60% < 70%
-// genius       70%+
 
 const calcTotalPoints = (dict, panagramsList) => {
   let points = 0;
