@@ -31,6 +31,12 @@ app.get("/", (req, res) => {
 
   let panagramsList = pangrams[randomGame.id.split("_")[0]]
   let totalPoints = calcTotalPoints(randomGame.dictionary, panagramsList);
+  // console.log("og totalPoints", totalPoints)
+
+  if(totalPoints > 400){
+    let diff = Math.round((totalPoints - 400) / 100) * 100;
+    totalPoints -= diff;
+  }
 
   res.json({
     letters: randomGame.chars,
@@ -45,35 +51,35 @@ app.get("/", (req, res) => {
       },
       "good start": {
         id: 1,
-        points: Math.floor(totalPoints * 0.1)
+        points: Math.floor(totalPoints * 0.02)
       },
       "moving up": {
         id: 2,
-        points: Math.floor(totalPoints * 0.15)
+        points: Math.floor(totalPoints * 0.05)
       },
       "good": {
         id: 3,
-        points: Math.floor(totalPoints * 0.2)
+        points: Math.floor(totalPoints * 0.08)
       },
       "solid": {
         id: 4,
-        points: Math.floor(totalPoints * 0.3),
+        points: Math.floor(totalPoints * 0.15),
       },
       "nice": {
         id: 5,
-        points: Math.floor(totalPoints * 0.4),
+        points: Math.floor(totalPoints * 0.25),
       },
       "great": {
         id: 6,
-        points: Math.floor(totalPoints * 0.5),
+        points: Math.floor(totalPoints * 0.40),
       },
       "amazing": {
         id: 7,
-        points: Math.floor(totalPoints * 0.6),
+        points: Math.floor(totalPoints * 0.50),
       },
       "genius": {
         id: 8,
-        points: Math.floor(totalPoints * 0.7),
+        points: Math.floor(totalPoints * 0.70),
       },
     }
   });
