@@ -11,6 +11,7 @@ app.use(cors())
 app.use(express.json());
 
 const calcTotalPoints = (dict, panagramsList) => {
+  // TODO ? calc and store score for each individual word in dictionary
   let points = 0;
   dict.forEach((word) => {
     if (panagramsList.includes(word)) {
@@ -51,23 +52,23 @@ app.get("/", (req, res) => {
       },
       "good start": {
         id: 1,
-        points: Math.floor(totalPoints * 0.02)
+        points: Math.ceil(totalPoints * 0.05)
       },
       "moving up": {
         id: 2,
-        points: Math.floor(totalPoints * 0.05)
+        points: Math.ceil(totalPoints * 0.08)
       },
       "good": {
         id: 3,
-        points: Math.floor(totalPoints * 0.08)
+        points: Math.floor(totalPoints * 0.15)
       },
       "solid": {
         id: 4,
-        points: Math.floor(totalPoints * 0.15),
+        points: Math.floor(totalPoints * 0.25),
       },
       "nice": {
         id: 5,
-        points: Math.floor(totalPoints * 0.25),
+        points: Math.floor(totalPoints * 0.30),
       },
       "great": {
         id: 6,
